@@ -8,14 +8,18 @@
 
 'use strict';
 
-var install = require('gulp-install'),
+var fs = require('fs'),
+    install = require('gulp-install'),
     conflict = require('gulp-conflict'),
     spawn = require('cross-spawn'),
     template = require('gulp-template'),
+    filter = require('gulp-filter'),
+    fn = require('gulp-fn'),
     rename = require('gulp-rename'),
     _ = require('underscore.string'),
     inquirer = require('inquirer'),
     path = require('path'),
+    btoa = require('btoa'),
     jsForce = require('jsforce');
 
 function loadCredentials() {
@@ -31,10 +35,6 @@ function loadCredentials() {
     }
 
     return credentials;
-}
-
-function setupSalesforce(credentials, appName) {
-
 }
 
 var defaults = (function () {
@@ -98,8 +98,15 @@ module.exports = function (gulp) {
                 }
 
                 var abstractAppName = 'app-name-to-replace';
+                var abstractVfPageName = 'app-vf-template.page';
+                var visualforcePageContent;
                 gulp.src(__dirname + '/../templates/app/**')
                     .pipe(template(answers))
+                    .pipe(fn(function(file) {
+                        if(path.basename(file.path) === abstractVfPageName) {
+                            visualforcePageContent = btoa(file._contents.toString());
+                        }
+                    }))
                     .pipe(rename(function (file) {
                         if(file.basename === abstractAppName) {
                             file.basename = answers.appNameCamel;
@@ -111,24 +118,43 @@ module.exports = function (gulp) {
                             file.basename = '.' + file.basename.slice(1);
                         }
                     }))
+                    .pipe(filter(['**', '!**/**.page']))
                     .pipe(conflict('./'))
                     .pipe(gulp.dest('./'))
                     .on('end', function () {
-                        function log(cmd) {
-                            function doLog(data) { console.log(data.toString()); }
-                            cmd.stdout.on('data', doLog);
-                            cmd.stderr.on('data', doLog);
-                            cmd.on('exit', doLog);
-                        }
-
                         var cwd = path.resolve(process.cwd(), answers.appNameCamel);
-                        var install = spawn.sync('npm', ['install'], { stdio: 'inherit', cwd: cwd});
-                        var buildAndDeploy = spawn.sync('npm', ['run', 'build:deploy'], {stdio: 'inherit', cwd: cwd});
+                        spawn.sync('npm', ['install'], { stdio: 'inherit', cwd: cwd});
+                        spawn.sync('npm', ['run', 'build:deploy'], {stdio: 'inherit', cwd: cwd});
 
-                        done();
+                        createVisualforcePage(defaults.credentials, answers.appNameCamel, visualforcePageContent, done);
                     });
             });
     });
+
+    function createVisualforcePage(credentials, name, content, callback) {
+        const conn = new jsForce.Connection();
+        conn.login(credentials.username, credentials.password + defaults.credentials.token, (err, res) => {
+                var metadata = [{
+                    fullName: name,
+                    label: name,
+                    content: content,
+                    description: name,
+                    apiVersion: 39
+                }];
+
+                conn.metadata.create('ApexPage', metadata, (err, results) => {
+                    if (results && results.success === true) {
+                        console.log('======================================================');
+                        console.log('The Apex Page: "' + name + '" was successfully created!');
+                        console.log('======================================================');
+                    } else {
+                        console.log(results);
+                    }
+
+                    callback();
+                });
+            });
+    }
 
 };
 

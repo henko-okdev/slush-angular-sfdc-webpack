@@ -6,7 +6,7 @@ const WebpackSfdcDeployPlugin = require('webpack-sfdc-deploy-plugin');
 
 const IS_DEPLOY = process.env.POST_BUILD === 'deploy';
 
-const outputPath = '../../../resource-bundles/<%= appNameCamel %>.resource/';
+const outputPath = '../../../resource-bundles/AwesomeApp.resource/';
 
 const config = {
     context: path.resolve(__dirname, 'app'),
@@ -85,7 +85,7 @@ if (IS_DEPLOY) {
     config.plugins.push(new WebpackSfdcDeployPlugin({
         credentialsPath: path.join(__dirname, '../../config/jsforce.config.js'),
         filesFolderPath: path.join(__dirname, outputPath),
-        staticResourceName: '<%= appNameCamel %>',
+        staticResourceName: 'AwesomeApp',
         include: [/\.js$/]
     }));
 }

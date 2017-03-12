@@ -17,21 +17,29 @@
   "license": "MIT",
   "main": "slushfile.js",
   "dependencies": {
+    "btoa": "^1.1.2",
+    "cross-spawn": "^5.1.0",
+    "cross-spawn-promise": "^0.9.2",
     "gulp": "^3.6.2",
     "gulp-conflict": "^0.1.1",
+    "gulp-filter": "^5.0.0",
+    "gulp-fn": "0.0.0",
     "gulp-install": "^0.1.4",
     "gulp-rename": "^1.2.0",
     "gulp-template": "^0.1.1",
+    "gulp-use": "0.0.4",
     "include-all": "^4.0.0",
     "iniparser": "^1.0.5",
     "inquirer": "^0.8.0",
     "jsforce": "^1.7.1",
     "slush": ">=1.0.0",
-    "underscore.string": "^2.3.3",
-    "cross-spawn": "^5.1.0",
-    "gulp-filter": "^5.0.0"
+    "underscore.string": "^2.3.3"
   },
   "keywords": [
-    "slushgenerator", "angularjs", "salesforce", "sfdc", "slush"
+    "slushgenerator",
+    "angularjs",
+    "salesforce",
+    "sfdc",
+    "slush"
   ]
 }
