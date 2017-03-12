@@ -1,29 +1,48 @@
-# Slush Angular-sfdc-webpack [![Build Status](https://secure.travis-ci.org/henko-okdev/slush-angular-sfdc-webpack.png?branch=master)](https://travis-ci.org/henko-okdev/slush-angular-sfdc-webpack) [![NPM version](https://badge-me.herokuapp.com/api/npm/slush-angular-sfdc-webpack.png)](http://badges.enytc.com/for/npm/slush-angular-sfdc-webpack)
+# Slush Angular-sfdc-webpack 
 
-> This is the slush generator for AngularJS Apps created in Webpack way and hosted on Salesforce.com
+[![npm version](https://badge.fury.io/js/slush-angular-sfdc-webpack.svg)](https://badge.fury.io/js/slush-angular-sfdc-webpack)
+[![Dependency Status](https://david-dm.org/henko-okdev/slush-angular-sfdc-webpack.svg)](https://david-dm.org/henko-okdev/slush-angular-sfdc-webpack)  
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)]()
+
+[![NPM](https://nodei.co/npm/slush-angular-sfdc-webpack.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/slush-angular-sfdc-webpack/)
+
+
+> This is the slush generator for AngularJS (ES6) Apps created in Webpack way and hosted on Salesforce.com
 
 
 ## Getting Started
 
-Install `slush-angular-sfdc-webpack` globally:
+Install `slush` and `slush-angular-sfdc-webpack` globally:
 
 ```bash
-$ npm install -g slush-angular-sfdc-webpack
+$ npm install -g slush slush-angular-sfdc-webpack
 ```
 
 ### Usage
 
-Create a new folder for your project:
+Navigate to your project folder and scaffold AngularJS apps structure
 
 ```bash
-$ mkdir my-slush-angular-sfdc-webpack
+$ cd my-sfdc-project
+$ slush angular-sfdc-webpack:package
 ```
 
-Run the generator from within the new folder:
+While creating a package you can enter Salesforce credentials to your project or you need to provide it after package scaffolding. To do that, open `my-sfdc-project/package/config/jsforce.config.js` file and edit it with valid username, password and security token.
+
+Then go to apps folder and create a new application, it will create a Visualforce page with corresponding StaticResource where the application files are stores
 
 ```bash
-$ cd my-slush-angular-sfdc-webpack && slush angular-sfdc-webpack
+$ cd package/apps
+$ slush angular-sfdc-webpack:app
 ```
+
+>The task for a new application is default, you can run it in the next way -  `$ slush angular-sfdc-webpack`
+
+The generator has different tasks:
+- `package`: create a folders structure for AngularJS apps
+- `app`: scaffold a new AngularJS application. Run this task from `apps` folder of the package
+- `component`: create a folder structure for a component
+- `service`: create a new service
 
 ## Getting To Know Slush
 
