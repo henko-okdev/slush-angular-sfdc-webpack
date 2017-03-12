@@ -1,6 +1,6 @@
 {
   "name": "slush-angular-sfdc-webpack",
-  "description": "This is the slush generator for AngularJS Apps created in Webpack way and hosted on Salesforce.com",
+  "description": "This is the slush generator for AngularJS (ES6) Apps created in Webpack way and hosted on Salesforce.com",
   "version": "1.0.0",
   "homepage": "https://github.com/henko-okdev/slush-angular-sfdc-webpack",
   "author": {
