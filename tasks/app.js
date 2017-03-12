@@ -83,7 +83,6 @@ module.exports = function (gulp) {
         inquirer.prompt(prompts,
             function (answers) {
 
-                // TODO: ask for angular app name style
                 // Format Application name in Salesforce and AngularJS way
                 answers.appNameSlug = _.slugify(answers.appName);
                 answers.appNameCamel = _.camelize(answers.appName);
