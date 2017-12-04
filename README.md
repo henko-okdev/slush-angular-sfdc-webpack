@@ -1,8 +1,6 @@
 # Slush Angular-sfdc-webpack 
 
-[![npm version](https://badge.fury.io/js/slush-angular-sfdc-webpack.svg)](https://badge.fury.io/js/slush-angular-sfdc-webpack)
-[![Dependency Status](https://david-dm.org/henko-okdev/slush-angular-sfdc-webpack.svg)](https://david-dm.org/henko-okdev/slush-angular-sfdc-webpack)  
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)]()
+[![npm version](https://badge.fury.io/js/slush-angular-sfdc-webpack.svg)](https://badge.fury.io/js/slush-angular-sfdc-webpack) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)]()
 
 [![NPM](https://nodei.co/npm/slush-angular-sfdc-webpack.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/slush-angular-sfdc-webpack/)
 
