@@ -7,7 +7,7 @@
 [![NPM](https://nodei.co/npm/slush-angular-sfdc-webpack.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/slush-angular-sfdc-webpack/)
 
 
-> This is the slush generator for AngularJS (ES6) Apps created in Webpack way and hosted on Salesforce.com
+This is the slush generator for AngularJS (ES6) Apps created in Webpack way and hosted on Salesforce.com
 
 
 ## Getting Started
