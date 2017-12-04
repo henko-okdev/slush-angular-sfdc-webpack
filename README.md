@@ -1,4 +1,4 @@
-# Slush Angular-sfdc-webpack 
+# slush-angular-sfdc-webpack 
 
 [![npm version](https://badge.fury.io/js/slush-angular-sfdc-webpack.svg)](https://badge.fury.io/js/slush-angular-sfdc-webpack) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)]()
 
